@@ -1,0 +1,8 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Attendance Manager</title></head>
+<body><script>
+  const role = localStorage.getItem("attendanceRole");
+  location.replace(role === "ADMIN" ? "admin-dashboard.html" : role === "TEACHER" ? "teacher-dashboard.html" : role === "STUDENT" ? "student-dashboard.html" : "login.html");
+</script></body>
+</html>
