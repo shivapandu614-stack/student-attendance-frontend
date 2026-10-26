@@ -5,6 +5,9 @@
     location.replace("login.html");
     return;
   }
+  window.escapeHtml = value => String(value ?? "").replace(/[&<>"']/g, character => ({
+    "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;", "'": "&#39;"
+  })[character]);
   const routes = {
     ADMIN: [
       ["Overview", "admin-dashboard.html", "⌂"], ["Students", "students.html", "♙"],
@@ -51,7 +54,7 @@
     async api(path, options = {}) {
       const headers = { "Authorization": `Bearer ${localStorage.getItem("attendanceToken")}`, ...(options.headers || {}) };
       if (options.body && !headers["Content-Type"]) headers["Content-Type"] = "application/json";
-      const response = await fetch(path, { ...options, headers });
+      const response = await fetch(window.attendanceApiUrl(path), { ...options, headers });
       if (response.status === 401) {
         localStorage.clear();
         location.replace("login.html");
@@ -80,8 +83,5 @@
       box.classList.remove("d-none");
     }
   };
-  window.escapeHtml = value => String(value ?? "").replace(/[&<>"']/g, character => ({
-    "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;", "'": "&#39;"
-  })[character]);
   window.statusBadge = status => `<span class="badge-status status-${String(status).toLowerCase()}">${escapeHtml(status)}</span>`;
 })();

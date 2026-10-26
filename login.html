@@ -14,14 +14,42 @@
     <p class="text-secondary mb-4">Sign in to continue to your workspace.</p>
     <div id="alert" class="alert d-none" role="alert"></div>
     <form id="loginForm">
-      <label class="form-label" for="username">Username</label>
+      <label class="form-label" for="username">Student ID or email</label>
       <input class="form-control form-control-lg mb-3" id="username" autocomplete="username" required>
       <label class="form-label" for="password">Password</label>
       <input class="form-control form-control-lg mb-4" id="password" type="password" autocomplete="current-password" required>
       <button class="btn btn-primary btn-lg w-100" id="submitButton" type="submit">Sign in</button>
     </form>
-    <div class="demo-hint mt-4"><strong>Demo access</strong><br>Admin: <code>admin / Admin123!</code><br>Teacher: <code>teacher@example.com / Teacher123!</code><br>Student: <code>STU-1001 / Student123!</code></div>
+    <form id="registerForm" class="d-none">
+      <label class="form-label" for="studentCode">Student ID</label>
+      <input class="form-control mb-3" id="studentCode" maxlength="40" autocomplete="username" required>
+      <label class="form-label" for="fullName">Full name</label>
+      <input class="form-control mb-3" id="fullName" maxlength="120" autocomplete="name" required>
+      <label class="form-label" for="email">Email</label>
+      <input class="form-control mb-3" id="email" type="email" maxlength="160" autocomplete="email" required>
+      <label class="form-label" for="phone">Phone <span class="text-secondary">(optional)</span></label>
+      <input class="form-control mb-3" id="phone" maxlength="30" autocomplete="tel">
+      <label class="form-label" for="department">Department</label>
+      <input class="form-control mb-3" id="department" maxlength="100" required>
+      <label class="form-label" for="year">Study year</label>
+      <select class="form-select mb-3" id="year" required>
+        <option value="">Select year</option>
+        <option value="1">Year 1</option><option value="2">Year 2</option>
+        <option value="3">Year 3</option><option value="4">Year 4</option>
+        <option value="5">Year 5</option><option value="6">Year 6</option>
+        <option value="7">Year 7</option><option value="8">Year 8</option>
+      </select>
+      <label class="form-label" for="newPassword">Password</label>
+      <input class="form-control mb-4" id="newPassword" type="password" minlength="8" autocomplete="new-password" required>
+      <button class="btn btn-primary btn-lg w-100" id="registerButton" type="submit">Create account</button>
+    </form>
+    <p class="text-center small mt-3 mb-0">
+      <span id="accountPrompt">Don't have a student account?</span>
+      <a href="#" id="toggleAccountForm">Create account</a>
+    </p>
+    <div class="demo-hint mt-4"><strong>Demo access</strong><br>Admin: <code>admin / Admin123!</code><br>Teacher: <code>teacher@example.com / Teacher123!</code><br>Student: <code>STU-1001 or student@example.com / Student123!</code></div>
   </main>
+  <script src="js/config.js"></script>
   <script src="js/login.js"></script>
 </body>
 </html>
